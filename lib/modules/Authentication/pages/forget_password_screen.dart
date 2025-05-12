@@ -35,10 +35,10 @@ class ForgetPasswordScreen extends StatelessWidget {
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-                    child: CustomFormFiled(
+                    child: CustomFormField(
                       controller: prov.emailController,
                       hintText: "Enter Your Email",
-                      lableText: "Email",
+                      labelText: "Email",
                       labelStyle: theme.textTheme.bodySmall,
                       isPassword: false,
                       prefixIcon: const Icon(Icons.email_rounded),

@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
+
+  String appLocale = "en";
   void changeTheme(ThemeMode? value) {
     if (value != null) {
       themeMode = value;
@@ -14,6 +16,20 @@ class AppProvider extends ChangeNotifier {
       }
     }
     saveTheme();
+    notifyListeners();
+  }
+
+  void changeLocale([String? value]) {
+    if (value != null) {
+      appLocale = value;
+    } else {
+      if (appLocale == "en") {
+        appLocale = "ar";
+      } else {
+        appLocale = "en";
+      }
+    }
+    saveLocale();
     notifyListeners();
   }
 
@@ -37,5 +53,15 @@ class AppProvider extends ChangeNotifier {
     String theme = prefs.getString("theme") ?? "";
     themeMode = theme == "light" ? ThemeMode.light : ThemeMode.dark;
     notifyListeners();
+  }
+
+  Future<void> saveLocale() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString("lang", appLocale);
+  }
+
+  Future<void> getLocale() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    appLocale = prefs.getString("lang") ?? "en";
   }
 }

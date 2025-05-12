@@ -40,10 +40,10 @@ class CreateAccountScreen extends StatelessWidget {
                     Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 10.r, horizontal: 8.r),
-                      child: CustomFormFiled(
+                      child: CustomFormField(
                         controller: prov.nameController,
                         hintText: "Enter Your Name",
-                        lableText: "Name",
+                        labelText: "Name",
                         labelStyle: theme.textTheme.bodySmall,
                         validator: (p0) {
                           if (p0 == null || p0.isEmpty) {
@@ -59,7 +59,7 @@ class CreateAccountScreen extends StatelessWidget {
                     Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 10.r, horizontal: 8.r),
-                      child: CustomFormFiled(
+                      child: CustomFormField(
                         controller: prov.emailController,
                         validator: (p0) {
                           if (p0 == null || p0.isEmpty) {
@@ -73,7 +73,7 @@ class CreateAccountScreen extends StatelessWidget {
                           }
                         },
                         hintText: "Enter Your Email",
-                        lableText: "Email",
+                        labelText: "Email",
                         labelStyle: theme.textTheme.bodySmall,
                         isPassword: false,
                         prefixIcon: const Icon(Icons.email_rounded),
@@ -82,10 +82,10 @@ class CreateAccountScreen extends StatelessWidget {
                     Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 10.r, horizontal: 8.r),
-                      child: CustomFormFiled(
+                      child: CustomFormField(
                         controller: prov.passwordController,
                         hintText: "Enter Your Password",
-                        lableText: "Password",
+                        labelText: "Password",
                         labelStyle: theme.textTheme.bodySmall,
                         isPassword: true,
                         validator: (p0) {
@@ -105,10 +105,10 @@ class CreateAccountScreen extends StatelessWidget {
                     Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 10.r, horizontal: 8.r),
-                      child: CustomFormFiled(
+                      child: CustomFormField(
                         controller: prov.rePasswordController,
                         hintText: "Re Password",
-                        lableText: "Re Password",
+                        labelText: "Re Password",
                         labelStyle: theme.textTheme.bodySmall,
                         validator: (p0) {
                           if (p0 == null || p0.isEmpty) {

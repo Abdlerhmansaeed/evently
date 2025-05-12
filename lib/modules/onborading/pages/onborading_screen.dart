@@ -9,6 +9,7 @@ import 'package:evently/modules/widegts/lanugage_changer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboradingScreen extends StatelessWidget {
   const OnboradingScreen({super.key});
@@ -20,7 +21,7 @@ class OnboradingScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.all(8.0.r),
+          padding: EdgeInsets.all(8.0.r),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,7 +35,7 @@ class OnboradingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 16.w, right: 16.w),
                 child: Text(
-                  OnBoradingdata.onboradingdata[0].title,
+                  AppLocalizations.of(context)!.start_title,
                   style: theme.textTheme.bodyMedium!
                       .copyWith(color: theme.primaryColor),
                 ),
@@ -45,7 +46,7 @@ class OnboradingScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 16.w, right: 16.w),
                 child: Text(
-                  OnBoradingdata.onboradingdata[0].discreption,
+                  AppLocalizations.of(context)!.start_desc,
                   style: theme.textTheme.bodySmall,
                 ),
               ),
@@ -55,7 +56,7 @@ class OnboradingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Theme Mode",
+                      AppLocalizations.of(context)!.theme,
                       style: theme.textTheme.bodyMedium!
                           .copyWith(color: theme.primaryColor),
                     ),
@@ -91,7 +92,7 @@ class OnboradingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Language",
+                      AppLocalizations.of(context)!.lang,
                       style: theme.textTheme.bodyMedium!
                           .copyWith(color: theme.primaryColor),
                     ),
@@ -100,9 +101,9 @@ class OnboradingScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(vertical: 8.r, horizontal: 4.r),
+                padding: EdgeInsets.symmetric(vertical: 8.r, horizontal: 4.r),
                 child: CustomButtonWidget(
-                  title: "Let's Start",
+                  title: AppLocalizations.of(context)!.l_start,
                   backgroundColor: theme.primaryColor,
                   style: theme.textTheme.bodyMedium!.copyWith(
                     color: AppColors.lightBg,

@@ -31,7 +31,7 @@ class EventModel {
             eventTime: json['eventTime'],
             image: json['image']);
 
-  Map<String, dynamic> tojson() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'userid': userid,

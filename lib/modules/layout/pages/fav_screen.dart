@@ -34,7 +34,7 @@ class _FavScreenState extends State<FavScreen> {
           children: [
             Padding(
               padding: EdgeInsets.all(16.r),
-              child: CustomFormFiled(
+              child: CustomFormField(
                 isPassword: false,
                 prefixIcon: Icon(
                   Icons.search_outlined,
@@ -42,7 +42,7 @@ class _FavScreenState extends State<FavScreen> {
                 ),
                 labelStyle:
                     TextStyle(fontSize: 16.sp, color: theme.primaryColor),
-                lableText: "Search for Event",
+                labelText: "Search for Event",
                 onChanged: (searchValue) {
                   provider.search(searchValue);
                 },

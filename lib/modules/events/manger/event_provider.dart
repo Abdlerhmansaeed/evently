@@ -75,8 +75,13 @@ class EventProvider extends ChangeNotifier {
 
   Future<void> updateEvent(BuildContext context, EventModel event) async {
     Loading.show(context);
-    await FirebaseDatabase.updateEvent(event);
-    Loading.hide(context);
-
+    try {
+      await FirebaseDatabase.updateEvent(event);
+      print("Event updated successfully in provider");
+    } catch (e) {
+      print("Error updating event in provider: ${e.toString()}");
+    } finally {
+      Loading.hide(context);
+    }
   }
 }

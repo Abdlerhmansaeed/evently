@@ -32,11 +32,12 @@ class LoginScreen extends StatelessWidget {
                       Center(child: Image.asset(AppAssets.eventlyLogo)),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: CustomFormFiled(
+                        child: CustomFormField(
                           controller: provider.emailController,
                           hintText: "Enter Your Email",
-                          lableText: "Email",
+                          labelText: "Email",
                           labelStyle: theme.textTheme.bodySmall,
+                          maxLines: 1,
                           validator: (p0) {
                             if (p0 == null || p0.isEmpty) {
                               return "Please enter your email";
@@ -54,10 +55,10 @@ class LoginScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: CustomFormFiled(
+                        child: CustomFormField(
                           controller: provider.passwordController,
                           hintText: "password",
-                          lableText: "password",
+                          labelText: "password",
                           labelStyle: theme.textTheme.bodySmall,
                           validator: (p0) {
                             if (p0 == null || p0.isEmpty) {
@@ -80,7 +81,8 @@ class LoginScreen extends StatelessWidget {
                         },
                       ),
                       Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 8.r, vertical: 4.r),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.r, vertical: 4.r),
                         child: CustomButtonWidget(
                           backgroundColor: theme.primaryColor,
                           style: theme.textTheme.bodyMedium!
@@ -133,11 +135,12 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 8.r, vertical: 4.r),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.r, vertical: 4.r),
                         child: CustomButtonWidget(
                             title: "Login With Google",
                             onPressed: () {
-                              provider.singInWithGoogle(context);
+                              provider.signInWithGoogle(context);
                             },
                             icon: AppAssets.googelICon,
                             backgroundColor: theme.scaffoldBackgroundColor,

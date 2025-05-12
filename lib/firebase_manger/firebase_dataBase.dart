@@ -7,7 +7,7 @@ class FirebaseDatabase {
     return FirebaseFirestore.instance.collection("Events").withConverter(
           fromFirestore: (snapshot, options) =>
               EventModel.fromJson(snapshot.data()!),
-          toFirestore: (value, options) => value.tojson(),
+          toFirestore: (value, options) => value.toJson(),
         );
   }
 
@@ -19,15 +19,40 @@ class FirebaseDatabase {
     return await docRef.set(data);
   }
 
-  static Future<void> updateEvent(EventModel data) async {
-   try{
-     var ref = getRef();
-     var doc = ref.doc(data.id);
-     await doc.update(data.tojson());
+  // note : updateEvent is not working as expected not updating the data in firebase and i don't know why !!
 
-   }catch(e){
-     print(e.toString());
-   }
+  static Future<void> updateEvent(EventModel data) async {
+    try {
+      print("--------------");
+      print("--------------");
+      print("--------------");
+      print("--------------");
+      print(data.id);
+      print(data.title);
+      print(data.description);
+      var ref = getRef();
+      await ref.doc(data.id).update(data.toJson());
+      await ref.doc(data.id).update({
+        'id': data.id,
+        'userid': data.userid,
+        'categoryId':data. categoryId,
+        'image': data.image,
+        'title': data.title,
+        'description': data.description,
+        'eventDate': data.eventDate,
+        'eventTime': data.eventTime,
+        'isFav': data.isFav
+      });
+      print("--------------");
+      print("--------------");
+      print("--------------");
+      print("--------------");
+      print(data.id);
+      print(data.id);
+
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   static Future<void> setFav(EventModel data) async {

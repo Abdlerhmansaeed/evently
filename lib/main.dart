@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 import 'core/app_manger/app_provider.dart';
 import 'core/app_routes/app_route_name.dart';
 import 'core/app_routes/app_routes.dart';
@@ -10,13 +10,13 @@ import 'core/app_theme/app_theme.dart';
 import 'firebase_options.dart';
 import 'modules/events/manger/event_provider.dart';
 import 'modules/layout/manager/layout_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
 
   AppProvider appProvider = AppProvider();
   await appProvider.getTheme();
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider(create: (_) => appProvider), // Inject loaded provider
+            ChangeNotifierProvider(create: (_) => appProvider),
             ChangeNotifierProvider(create: (_) => LayoutProvider()),
             ChangeNotifierProvider(create: (_) => EventProvider()),
           ],
@@ -47,6 +47,17 @@ class MyApp extends StatelessWidget {
 
             return MaterialApp(
               debugShowCheckedModeBanner: false,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                Locale('ar'), // English
+                Locale('en'), // arabic
+              ],
+              locale: Locale(provider.appLocale),
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: provider.themeMode, // Now it loads instantly

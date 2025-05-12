@@ -83,23 +83,23 @@ class EditEventScreen extends StatelessWidget {
                     "Title",
                     style: theme.textTheme.bodyMedium,
                   ),
-                  CustomFormFiled(
+                  CustomFormField(
                     prefixIcon: const Icon(Icons.edit_note),
                     hintText: "Event title",
-                    initialValue: eventsData.title,
                     labelStyle: theme.textTheme.bodySmall!,
                     isPassword: false,
+                    controller: provider.titleController,
                   ),
                   Text(
                     "Description",
                     style: theme.textTheme.bodyMedium,
                   ),
-                  CustomFormFiled(
+                  CustomFormField(
                     isPassword: false,
                     hintText: "Event Description",
-                    initialValue: eventsData.description,
                     labelStyle: theme.textTheme.bodySmall!,
                     maxLines: 4,
+                    controller: provider.descriptionController,
                   ),
                   Row(
                     children: [
@@ -217,6 +217,7 @@ class EditEventScreen extends StatelessWidget {
                         userid: eventsData.userid,
                           isFav: eventsData.isFav,
                         );
+                        print("Updated event data: ${updatedEvent..toString()}");
                         await provider.updateEvent(context, updatedEvent);
                         Navigator.pushReplacementNamed(context ,AppRouteName.layoutScreen);
                       },

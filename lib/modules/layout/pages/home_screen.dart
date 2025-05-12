@@ -23,10 +23,11 @@ class HomeScreen extends StatelessWidget {
               appBar: AppBar(
                 toolbarHeight: 170.h,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24.r),
-                  bottomRight: Radius.circular(24.r),
-                )),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(24.r),
+                    bottomRight: Radius.circular(24.r),
+                  ),
+                ),
                 leadingWidth: double.infinity,
                 leading: Padding(
                   padding: EdgeInsets.all(8.0.r),
@@ -126,6 +127,14 @@ class HomeScreen extends StatelessWidget {
                           CategoryData.categories[prov.tapselectedIndex].id),
                       builder: (context, snapshot) {
                         var data = snapshot.data?.docs ?? [];
+                        if (data.isEmpty) {
+                          return const Center(
+                            child: Text(
+                              "No Events",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          );
+                        }
                         return ListView.builder(
                           itemCount: data.length,
                           itemBuilder: (context, index) {

@@ -78,7 +78,13 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                           return Tab(
                             child: TabWidget(
                                 categoryData: e,
-
+                                 borderColor: theme.primaryColor,
+                                fillColor: provider.tapselectedIndex ==
+                                    CategoryData.createEventCategories
+                                        .indexOf(e) ? theme.primaryColor : null,
+                                textColor: provider.tapselectedIndex ==
+                                    CategoryData.createEventCategories
+                                        .indexOf(e) ? Colors.white : theme.primaryColor,
                                 isSelected: provider.tapselectedIndex ==
                                     CategoryData.createEventCategories
                                         .indexOf(e)),
@@ -89,7 +95,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                       "Title",
                       style: theme.textTheme.bodyMedium,
                     ),
-                    CustomFormFiled(
+                    CustomFormField(
                       prefixIcon: const Icon(Icons.edit_note),
                       hintText: "Event title",
                       labelStyle: theme.textTheme.bodySmall!,
@@ -100,7 +106,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                       "Description",
                       style: theme.textTheme.bodyMedium,
                     ),
-                    CustomFormFiled(
+                    CustomFormField(
                       isPassword: false,
                       hintText: "Event Description",
                       labelStyle: theme.textTheme.bodySmall!,
